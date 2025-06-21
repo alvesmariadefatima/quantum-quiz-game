@@ -1,6 +1,7 @@
 import atomo from './components/assets/atomo.png';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './components/Home/Home'
+import Home from './components/Home/Home';
+import InsertNickname from './components/InsertNickname/InsertNickname';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/nickname" element={<InsertNickname />} />
         </Routes>
       </BrowserRouter>
     </div>
