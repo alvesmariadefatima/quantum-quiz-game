@@ -1,0 +1,122 @@
+[
+  {
+    "id": "q1",
+    "pergunta": "O que é um qubit?",
+    "alternativas": ["Um tipo de software quântico", "A unidade de memória clássica", "A menor unidade de informação na computação quântica", "Um tipo de circuito lógico"],
+    "resposta_correta": "A menor unidade de informação na computação quântica"
+  },
+  {
+    "id": "q2",
+    "pergunta": "Qual das propriedades abaixo é característica dos qubits?",
+    "alternativas": ["Binário fixo", "Superposição", "Paralelismo determinístico", "Consistência estática"],
+    "resposta_correta": "Superposição"
+  },
+  {
+    "id": "q3",
+    "pergunta": "O que significa 'superposição' em computação quântica?",
+    "alternativas": ["Um qubit estar em múltiplos estados ao mesmo tempo", "Um sistema estar em colapso", "Um sistema clássico ser imitado", "Um algoritmo que se repete"],
+    "resposta_correta": "Um qubit estar em múltiplos estados ao mesmo tempo"
+  },
+  {
+    "id": "q4",
+    "pergunta": "O que é o entrelaçamento quântico (entanglement)?",
+    "alternativas": ["Duas partículas colapsando simultaneamente", "Um tipo de interferência entre sinais", "Uma conexão clássica entre átomos", "Uma partícula girando em múltiplos sentidos"],
+    "resposta_correta": "Duas partículas colapsando simultaneamente"
+  },
+  {
+    "id": "q5",
+    "pergunta": "Qual é o nome do algoritmo quântico usado para fatoração de números primos?",
+    "alternativas": ["Algoritmo de Grover", "Algoritmo de Deutsch-Jozsa", "Algoritmo de Shor", "Algoritmo de Simon"],
+    "resposta_correta": "Algoritmo de Shor"
+  },
+  {
+    "id": "q6",
+    "pergunta": "Qual é o principal benefício do algoritmo de Grover?",
+    "alternativas": ["Ordenar listas rapidamente", "Buscar em listas não ordenadas mais rápido que algoritmos clássicos", "Codificar mensagens criptográficas", "Simular buracos negros"],
+    "resposta_correta": "Buscar em listas não ordenadas mais rápido que algoritmos clássicos"
+  },
+  {
+    "id": "q7",
+    "pergunta": "Qual dessas linguagens é usada para programar computadores quânticos?",
+    "alternativas": ["Python", "Q#", "Java", "HTML"],
+    "resposta_correta": "Q#"
+  },
+  {
+    "id": "q8",
+    "pergunta": "Qual empresa desenvolveu a plataforma de computação quântica chamada Qiskit?",
+    "alternativas": ["Microsoft", "Google", "IBM", "Intel"],
+    "resposta_correta": "IBM"
+  },
+  {
+    "id": "q9",
+    "pergunta": "O que acontece com o estado quântico após a medição?",
+    "alternativas": ["Ele permanece inalterado", "Ele se propaga", "Ele colapsa para um dos possíveis estados", "Ele desaparece"],
+    "resposta_correta": "Ele colapsa para um dos possíveis estados"
+  },
+  {
+    "id": "q10",
+    "pergunta": "Qual é a principal limitação dos computadores quânticos atuais?",
+    "alternativas": ["Falta de eletricidade", "Pouca memória", "Ruído e decoerência", "Lentidão dos processadores"],
+    "resposta_correta": "Ruído e decoerência"
+  },
+  {
+    "id": "q11",
+    "pergunta": "O que é decoerência quântica?",
+    "alternativas": ["Perda de energia em circuitos", "Mudança de algoritmo", "Perda do comportamento quântico por interação com o ambiente", "Aumento de velocidade do sistema"],
+    "resposta_correta": "Perda do comportamento quântico por interação com o ambiente"
+  },
+  {
+    "id": "q12",
+    "pergunta": "O que é uma porta quântica (quantum gate)?",
+    "alternativas": ["Um software de segurança", "Um tipo de memória de acesso rápido", "Um operador que manipula qubits", "Um canal de transmissão de dados"],
+    "resposta_correta": "Um operador que manipula qubits"
+  },
+  {
+    "id": "q13",
+    "pergunta": "Qual é o objetivo da computação quântica?",
+    "alternativas": ["Substituir a computação clássica em todas as áreas", "Resolver problemas que são intratáveis para computadores clássicos", "Criar melhores jogos de videogame", "Melhorar redes sociais"],
+    "resposta_correta": "Resolver problemas que são intratáveis para computadores clássicos"
+  },
+  {
+    "id": "q14",
+    "pergunta": "Quantos estados básicos pode representar um único qubit em superposição?",
+    "alternativas": ["1", "2", "Infinitos", "3"],
+    "resposta_correta": "Infinitos"
+  },
+  {
+    "id": "q15",
+    "pergunta": "Qual fenômeno permite que dois qubits separados interajam instantaneamente?",
+    "alternativas": ["Supercondutividade", "Ondas eletromagnéticas", "Entrelaçamento", "Interferência"],
+    "resposta_correta": "Entrelaçamento"
+  },
+  {
+    "id": "q16",
+    "pergunta": "Qual campo da matemática é essencial para estudar computação quântica?",
+    "alternativas": ["Aritmética modular", "Álgebra linear", "Estatística", "Trigonometria"],
+    "resposta_correta": "Álgebra linear"
+  },
+  {
+    "id": "q17",
+    "pergunta": "Em qual escala física os computadores quânticos operam?",
+    "alternativas": ["Mecânica clássica", "Termodinâmica", "Mecânica quântica", "Relatividade"],
+    "resposta_correta": "Mecânica quântica"
+  },
+  {
+    "id": "q18",
+    "pergunta": "O que é um simulador quântico?",
+    "alternativas": ["Uma máquina clássica que tenta imitar sistemas quânticos", "Um jogo de computador", "Um compilador de Python", "Um tipo de antivírus"],
+    "resposta_correta": "Uma máquina clássica que tenta imitar sistemas quânticos"
+  },
+  {
+    "id": "q19",
+    "pergunta": "O que é a reversibilidade em computação quântica?",
+    "alternativas": ["A capacidade de medir o estado final", "A capacidade de apagar dados", "A possibilidade de inverter operações lógicas sem perda de informação", "A rotação de estados físicos"],
+    "resposta_correta": "A possibilidade de inverter operações lógicas sem perda de informação"
+  },
+  {
+    "id": "q20",
+    "pergunta": "Qual dessas áreas NÃO é diretamente beneficiada pela computação quântica atualmente?",
+    "alternativas": ["Criptografia", "Otimização", "Simulação de moléculas", "Jogos casuais em smartphones"],
+    "resposta_correta": "Jogos casuais em smartphones"
+  }
+]
