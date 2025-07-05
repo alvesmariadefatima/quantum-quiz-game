@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import questions from '../../questions/questions.json';
+import answerGuides from '../../hints/answer_guides.json';
 import { FaRegStar } from 'react-icons/fa6';
+import { IoMdHelpCircle } from "react-icons/io";
 
 interface Question {
   pergunta: string;
@@ -24,6 +26,8 @@ const QuizPage = () => {
     answers: {},
   });
 
+  const [showHint, setShowHint] = useState(false);
+
   const currentQuestion: Question = questions[quizState.currentQuestionIndex];
   const totalQuestions = questions.length;
 
@@ -31,6 +35,11 @@ const QuizPage = () => {
   const selectedAnswer = currentAnswer?.selectedAnswer || null;
   const isAnswered = currentAnswer?.isAnswered || false;
   const isCorrect = selectedAnswer === currentQuestion.resposta_correta;
+
+  // Busca a dica correspondente pelo id da questão atual
+  const currentHint = answerGuides.find(
+    (hint) => hint.id === `q${quizState.currentQuestionIndex + 1}`
+  )?.dica;
 
   const handleAnswerClick = (answer: string) => {
     setQuizState((prev) => ({
@@ -43,6 +52,7 @@ const QuizPage = () => {
         },
       },
     }));
+    setShowHint(false); // opcional: esconder dica quando responder
   };
 
   const handleNextQuestion = () => {
@@ -51,6 +61,7 @@ const QuizPage = () => {
         ...prev,
         currentQuestionIndex: prev.currentQuestionIndex + 1,
       }));
+      setShowHint(false);
     } else {
       alert(`🎉 Fim do quiz! Sua pontuação final foi: ${calculateScore()}`);
     }
@@ -62,6 +73,7 @@ const QuizPage = () => {
         ...prev,
         currentQuestionIndex: prev.currentQuestionIndex - 1,
       }));
+      setShowHint(false);
     }
   };
 
@@ -81,12 +93,26 @@ const QuizPage = () => {
           <h1 className="text-xl font-bold">
             Questão {quizState.currentQuestionIndex + 1} de {totalQuestions}
           </h1>
-          <span className="text-md font-semibold text-black flex items-center gap-2">
-            <div className="bg-purple-400 p-1 rounded">
-              <FaRegStar className="text-white" />
-            </div>
-            Pontuação: {score}
-          </span>
+          <div className="flex items-center gap-4">
+            <span className="text-md font-semibold text-black flex items-center gap-2">
+              <div className="bg-purple-400 p-1 rounded">
+                <FaRegStar className="text-white" />
+              </div>
+              Pontuação: {score}
+            </span>
+
+            <button
+              onClick={() => setShowHint((prev) => !prev)}
+              className="text-md font-semibold text-black flex items-center gap-2 focus:outline-none cursor-pointer"
+              aria-expanded={showHint}
+              aria-controls="hint-content"
+            >
+              <div className="bg-purple-400 p-1 rounded">
+                <IoMdHelpCircle className="text-white" />
+              </div>
+              Dicas
+            </button>
+          </div>
         </header>
 
         <section>
@@ -143,6 +169,17 @@ const QuizPage = () => {
                   <span className="underline">{currentQuestion.resposta_correta}</span>
                 </p>
               )}
+            </div>
+          )}
+
+          {showHint && currentHint && (
+            <div
+              id="hint-content"
+              className="mt-5 p-4 bg-yellow-100 rounded border border-yellow-300 text-yellow-800 text-sm sm:text-base"
+              role="region"
+              aria-live="polite"
+            >
+              💡 {currentHint}
             </div>
           )}
         </section>
