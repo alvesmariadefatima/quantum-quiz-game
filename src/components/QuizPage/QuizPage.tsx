@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import questions from '../../questions/questions.json';
 import answerGuides from '../../hints/answer_guides.json';
 import { FaRegStar } from 'react-icons/fa6';
@@ -21,6 +22,8 @@ interface QuizState {
 }
 
 const QuizPage = () => {
+  const navigate = useNavigate();
+
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestionIndex: 0,
     answers: {},
@@ -63,9 +66,16 @@ const QuizPage = () => {
       }));
       setShowHint(false);
     } else {
-      alert(`🎉 Fim do quiz! Sua pontuação final foi: ${calculateScore()}`);
-    }
-  };
+      navigate("/gameresults", {
+      state: {
+        score: calculateScore(),
+        correct: countCorrect(),
+        incorrect: countIncorrect(),
+        total: totalQuestions,
+        },
+    });
+  }
+};
 
   const handlePreviousQuestion = () => {
     if (quizState.currentQuestionIndex > 0) {
@@ -83,6 +93,18 @@ const QuizPage = () => {
       return answer.selectedAnswer === correctAnswer ? score + 1 : score - 1;
     }, 0);
   };
+
+  const countCorrect = (): number => {
+    return Object.entries(quizState.answers).filter(
+      ([index, answer]) => answer.selectedAnswer === questions[+index].resposta_correta
+    ).length;
+  };
+
+  const countIncorrect = (): number => {
+    return Object.entries(quizState.answers).filter(
+    ([index, answer]) => answer.selectedAnswer != questions[+index].resposta_correta
+  ).length;
+};
 
   const score = calculateScore();
 

@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { useNavigate} from "react-router-dom";
 
 const InsertNickname = () => {
+  const navigate = useNavigate();
   const [nickname, setNickname] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ const InsertNickname = () => {
       navigate("/quiz");
       // prosseguir para a próxima rota, salvar localStorage, etc
       console.log("Apelido válido:", nickname);
+      navigate("/quiz");
     }
   };
 
