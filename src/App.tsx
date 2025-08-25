@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import InsertNickname from './components/InsertNickname/InsertNickname';
 import GameInstructions from './components/GameInstructions/GameInstructions';
 import QuizPage from './components/QuizPage/QuizPage';
+import GameResults from './components/GameResults/GameResults';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/nickname" element={<InsertNickname />} />
           <Route path="/gameinstructions" element={< GameInstructions/>} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/gameresults" element={<GameResults />} />
         </Routes>
       </BrowserRouter>
     </div>
