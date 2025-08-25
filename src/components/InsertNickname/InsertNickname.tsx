@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
+import { useNavigate} from "react-router-dom";
 
 const InsertNickname = () => {
   const [nickname, setNickname] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const validateNickname = () => {
     const pattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[:;<>,.?~/-]).+$/;
@@ -14,6 +16,7 @@ const InsertNickname = () => {
       setError("⚠️ O apelido deve conter letras, números e símbolos especiais.");
     } else {
       setError("");
+      navigate("/quiz");
       // prosseguir para a próxima rota, salvar localStorage, etc
       console.log("Apelido válido:", nickname);
     }
