@@ -1,54 +1,115 @@
-# React + TypeScript + Vite
+# 🌌 Quantum Quiz  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um quiz interativo de perguntas e respostas focado em **conceitos básicos de computação quântica**, desenvolvido para auxiliar estudantes e curiosos a aprenderem de forma prática e divertida sobre esse tema emergente da ciência e tecnologia.  
 
-Currently, two official plugins are available:
+📘 Este projeto foi desenvolvido como parte do meu **Trabalho de Conclusão de Curso (TCC)** na área de **Tecnologia da Informação**, unindo teoria e prática no desenvolvimento de uma aplicação educacional.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias utilizadas  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  
+![React Icons](https://img.shields.io/badge/React%20Icons-E91E63?style=for-the-badge&logo=react&logoColor=white)  
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)  
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🎯 Objetivo do projeto  
+
+O **Quantum Quiz** foi criado com a finalidade de:  
+- Tornar conceitos de **computação quântica** mais acessíveis.  
+- Proporcionar um ambiente gamificado de aprendizado.  
+- Reforçar a fixação de conteúdos por meio de perguntas objetivas.  
+- Servir como base prática para meu **TCC**, aplicando conhecimentos adquiridos ao longo do curso.  
+
+---
+
+## 🖥️ Funcionalidades  
+
+- ✅ Sistema de perguntas e respostas dinâmicas  
+- ✅ Feedback imediato sobre respostas corretas e incorretas  
+- ✅ Interface responsiva e amigável  
+- ✅ Pontuação acumulativa  
+- ✅ Protótipo validado no Figma antes do desenvolvimento  
+
+---
+
+## 📂 Estrutura do projeto  
+
+```bash
+quantum-quiz/
+│── src/
+│   ├── assets/       # Ícones, imagens e recursos visuais
+│   ├── components/   # Componentes reutilizáveis
+│   ├── hints/        # Arquivo JSON para inserir dicas
+│   ├── questions/    # Banco de questões armazenado em JSON
+│   └── App.tsx       # Componente principal
+│
+├── package.json      # Dependências e scripts
+└── README.md         # Documentação
+```
+---
+
+## ⚡ Como executar o projeto  
+
+1. Clone este repositório:  
+```bash
+git clone https://github.com/seu-usuario/quantum-quiz.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Acesse a pasta do projeto:
+```bash
+cd quantum-quiz
 ```
+
+3. Instale as dependências
+
+```bash
+npm install
+```
+
+4. Inicie o servidor de desenvolvimento
+
+```bash
+npm run dev
+```
+
+5. Acesse em:
+
+```bash
+https://localhost:5173
+```
+
+🤝 Contribuição
+
+Contribuições são bem-vindas!
+Para contribuir:
+
+1. Faça um fork do projeto
+
+2. Crie uma branch (git checkout -b feature/nova-funcionalidade)
+
+3. Commit suas mudanças (git commit -m 'Adiciona nova funcionalidade')
+
+4. Faça um push para a branch (git push origin feature/nova-funcionalidade)
+
+5. Abra um Pull Request
+
+---
+
+# ✍️ Autoria e Orientação
+
+***Autora:*** Maria de Fátima Nunes Alves
+
+***Orientadores:***
+
+Prof. Victor Brunno Dantas de Souza Rosas
+
+Prof. Ícaro dos Santos Ferreira
+
+---
+
+✨ Desenvolvido como parte do meu TCC, unindo pesquisa acadêmica e prática em desenvolvimento de software para difundir o aprendizado em computação quântica!
