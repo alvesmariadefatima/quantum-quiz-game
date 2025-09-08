@@ -10,6 +10,19 @@ const GameResults = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { correct, incorrect } = location.state || {};
+
+    const shareText = `Acabei de jogar e fiz ${correct} acertos e ${incorrect} erros!`;
+    const shareUrl = "https://quantumquiz.vercel.app";
+
+    const links = {
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, 
+        twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
+        whatsapp: `https://wa.me/?text=${encodeURIComponent(shareText + " " + shareUrl)}`,
+        telegram: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,   
+        instagram: shareUrl
+    };
+
     return (
         <>
     <div className="flex items-center justify-center min-h-screen">
@@ -24,12 +37,29 @@ const GameResults = () => {
                 </p>
 
                 <div className="flex items justify-center space-x-3 mt-6">
-                    <FaFacebook className="text-blue-500 text-3xl" />
-                    <FaSquareInstagram className="text-pink-500 text-3xl" />
-                    <IoLogoWhatsapp className="text-green-400 text-3xl" />
-                    <FaTelegram className="text-blue-400 text-3xl" />
-                    <FaSquareXTwitter className="text-black text-3xl" />
-                    <FaLinkedin className="text-blue-600 text-3xl" />
+                    <a href={links.facebook} target="_blank" rel="noopener noreferrer">
+                        <FaFacebook className="text-blue-500 text-3xl" />
+                    </a>
+
+                    <a href={links.instagram} target="_blank" rel="noopener noreferrer">
+                        <FaSquareInstagram className="text-pink-500 text-3xl" />
+                    </a>
+                    
+                    <a href={links.whatsapp} target="_blank" rel="noopener noreferrer">
+                        <IoLogoWhatsapp className="text-green-400 text-3xl" />
+                    </a>
+
+                    <a href={links.telegram} target="_blank" rel="noopener noreferrer">
+                        <FaTelegram className="text-blue-400 text-3xl" />
+                    </a>
+
+                    <a href={links.twitter} target="_blank" rel="noopener noreferrer">
+                        <FaSquareXTwitter className="text-black text-3xl" />
+                    </a>
+
+                    <a href={links.linkedin} target="_blank" rel="noopener noreferrer">
+                        <FaLinkedin className="text-blue-600 text-3xl" />
+                    </a>
                 </div>
 
                 <button
