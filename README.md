@@ -56,6 +56,13 @@ quantum-quiz/
 ```
 ---
 
+## 📚 Sugestão de material de estudos
+
+**Quantum Brasil** é um canal dedicado a explorar e divulgar o fascinante universo da Computação Quântica para a comunidade brasileira. Aqui, você encontrará palestras, workshops e conteúdos exclusivos que conectam teoria e prática, abrangendo desde fundamentos até aplicações avançadas. Nosso objetivo é fomentar o aprendizado, inspirar novos talentos e aproximar a comunidade das inovações que estão moldando o futuro quântico.
+
+Acesse aqui: 
+[Quantum Brasil](https://www.youtube.com/channel/UCYPhdIDsF5aVPNOwJAtN0Pg)
+
 ## ⚡ Como executar o projeto  
 
 1. Clone este repositório:  
