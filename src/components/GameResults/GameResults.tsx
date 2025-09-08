@@ -12,7 +12,7 @@ const GameResults = () => {
     const { correct, incorrect } = location.state || {};
 
     const shareText = `Acabei de jogar e fiz ${correct} acertos e ${incorrect} erros!`;
-    const shareUrl = "https://quantumquiz.vercel.app";
+    const shareUrl = "https://quantum-quiz-game.vercel.app";
 
     const links = {
         facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, 
