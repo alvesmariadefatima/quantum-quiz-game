@@ -2,18 +2,21 @@
 
 Um quiz interativo de perguntas e respostas focado em **conceitos básicos de computação quântica**, desenvolvido para auxiliar estudantes e curiosos a aprenderem de forma prática e divertida sobre esse tema emergente da ciência e tecnologia.  
 
-📘 Este projeto foi desenvolvido como parte do meu **Trabalho de Conclusão de Curso (TCC)** na área de **Tecnologia da Informação**, unindo teoria e prática no desenvolvimento de uma aplicação educacional.  
+📘 Este projeto foi desenvolvido como parte do meu **Trabalho de Conclusão de Curso (TCC)** na área de **Ciência da Computação**, unindo teoria e prática no desenvolvimento de uma aplicação educacional.  
 
 ---
 
 ## 🚀 Tecnologias utilizadas  
+<div align="center">
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)  
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  
-![React Icons](https://img.shields.io/badge/React%20Icons-E91E63?style=for-the-badge&logo=react&logoColor=white)  
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)  
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)  
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/React%20Icons-E91E63?style=for-the-badge&logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
+
+</div>
 
 ---
 
@@ -106,9 +109,9 @@ Para contribuir:
 
 ***Orientadores:***
 
-Prof. Victor Brunno Dantas de Souza Rosas
+Prof. Esp. Victor Brunno Dantas de Souza Rosas
 
-Prof. Ícaro dos Santos Ferreira
+Prof. Esp. Ícaro dos Santos Ferreira
 
 ---
 
