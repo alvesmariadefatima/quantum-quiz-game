@@ -8,12 +8,12 @@ const InsertNickname = () => {
   const [error, setError] = useState("");
 
   const validateNickname = () => {
-    const pattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[:;<>,.?~/-]).+$/;
-
+  const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/;
+  
     if (nickname.trim() === "") {
       setError("⚠️ O campo é obrigatório.");
     } else if (!pattern.test(nickname)) {
-      setError("⚠️ O apelido deve conter letras, números e símbolos especiais.");
+      setError("⚠️ O apelido deve conter letras e números.");
     } else {
       setError("");
       navigate("/quiz");
@@ -34,7 +34,7 @@ const InsertNickname = () => {
             type="text"
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
-            placeholder="Digite seu apelido"
+            placeholder="Ex.: maria123"
             className="flex-1 outline-none bg-transparent text-purple-900 placeholder-purple-400"
           />
         </div>
