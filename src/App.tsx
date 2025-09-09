@@ -12,7 +12,8 @@ function App() {
       style={{
         backgroundImage: `url(${atomo})`,
         backgroundRepeat: 'repeat',
-        backgroundSize: '100px',
+        backgroundSize: '50px 50px',
+        backgroundPosition: '0 0',
         backgroundColor: 'transparent',
         minHeight: '100vh',
       }}
