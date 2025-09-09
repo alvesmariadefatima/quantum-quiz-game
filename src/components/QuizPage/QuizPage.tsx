@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import questions from '../../questions/questions.json';
+import rawQuestions from '../../questions/questions.json';
 import answerGuides from '../../hints/answer_guides.json';
 import { FaRegStar } from 'react-icons/fa6';
 import { IoMdHelpCircle } from "react-icons/io";
 
 interface Question {
+  id: string;
   pergunta: string;
   alternativas: string[];
   resposta_correta: string;
@@ -24,12 +25,28 @@ interface QuizState {
 const QuizPage = () => {
   const navigate = useNavigate();
 
+  const shuffleArray = <T,>(array: T[]): T[] => {
+    return array
+      .map(value => ({ value, sorte: Math.random() }))
+      .sort((a, b) => a.sorte - b.sorte)
+      .map(({ value }) => value);
+  };
+
+  // Embaralha perguntas apenas uma vez no início
+  const [questions, setQuestions] = useState<Question[]>([]);
+
+  useEffect(() => {
+    setQuestions(shuffleArray(rawQuestions));
+  }, []);
+
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestionIndex: 0,
     answers: {},
   });
 
   const [showHint, setShowHint] = useState(false);
+
+  if (questions.length === 0) return null; // Evita erro até embaralhar
 
   const currentQuestion: Question = questions[quizState.currentQuestionIndex];
   const totalQuestions = questions.length;
@@ -41,7 +58,7 @@ const QuizPage = () => {
 
   // Busca a dica correspondente pelo id da questão atual
   const currentHint = answerGuides.find(
-    (hint) => hint.id === `q${quizState.currentQuestionIndex + 1}`
+    (hint) => hint.id === currentQuestion.id
   )?.dica;
 
   const handleAnswerClick = (answer: string) => {
@@ -55,7 +72,7 @@ const QuizPage = () => {
         },
       },
     }));
-    setShowHint(false); // opcional: esconder dica quando responder
+    setShowHint(false);
   };
 
   const handleNextQuestion = () => {
@@ -67,15 +84,15 @@ const QuizPage = () => {
       setShowHint(false);
     } else {
       navigate("/gameresults", {
-      state: {
-        score: calculateScore(),
-        correct: countCorrect(),
-        incorrect: countIncorrect(),
-        total: totalQuestions,
+        state: {
+          score: calculateScore(),
+          correct: countCorrect(),
+          incorrect: countIncorrect(),
+          total: totalQuestions,
         },
-    });
-  }
-};
+      });
+    }
+  };
 
   const handlePreviousQuestion = () => {
     if (quizState.currentQuestionIndex > 0) {
@@ -102,9 +119,9 @@ const QuizPage = () => {
 
   const countIncorrect = (): number => {
     return Object.entries(quizState.answers).filter(
-    ([index, answer]) => answer.selectedAnswer != questions[+index].resposta_correta
-  ).length;
-};
+      ([index, answer]) => answer.selectedAnswer !== questions[+index].resposta_correta
+    ).length;
+  };
 
   const score = calculateScore();
 
