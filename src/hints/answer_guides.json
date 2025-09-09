@@ -1,82 +1,142 @@
 [
   {
     "id": "q1",
-    "dica": "Pense na menor unidade que pode existir em múltiplos estados ao mesmo tempo, diferente do bit clássico."
+    "dica": "Pense na menor unidade que pode existir em múltiplos estados ao mesmo tempo, diferente do bit clássico.",
+    "dificuldade": "facil"
   },
   {
     "id": "q2",
-    "dica": "Essa propriedade permite que um qubit esteja em mais de um estado simultaneamente, algo que bits tradicionais não conseguem."
+    "dica": "Essa propriedade permite que um qubit esteja em mais de um estado simultaneamente, algo que bits tradicionais não conseguem.",
+    "dificuldade": "facil"
   },
   {
     "id": "q3",
-    "dica": "Imagine um estado onde algo pode ser zero e um ao mesmo tempo, até ser observado."
+    "dica": "Imagine um estado onde algo pode ser zero e um ao mesmo tempo, até ser observado.",
+    "dificuldade": "facil"
   },
   {
     "id": "q4",
-    "dica": "Duas partículas podem ficar tão conectadas que a mudança em uma afeta imediatamente a outra, mesmo à distância."
+    "dica": "Duas partículas podem ficar tão conectadas que a mudança em uma afeta imediatamente a outra, mesmo à distância.",
+    "dificuldade": "medio"
   },
   {
     "id": "q5",
-    "dica": "Este algoritmo é famoso por ajudar a fatorar números grandes, o que é muito difícil para computadores tradicionais."
+    "dica": "Este algoritmo é famoso por ajudar a fatorar números grandes, o que é muito difícil para computadores tradicionais.",
+    "dificuldade": "dificil"
   },
   {
     "id": "q6",
-    "dica": "Considere um método que acelera a busca em uma lista sem ordem, superando a velocidade dos algoritmos clássicos."
+    "dica": "Considere um método que acelera a busca em uma lista sem ordem, superando a velocidade dos algoritmos clássicos.",
+    "dificuldade": "dificil"
   },
   {
     "id": "q7",
-    "dica": "Uma linguagem criada especialmente para o universo quântico, com um nome curto e começando com 'Q'."
+    "dica": "Uma linguagem criada especialmente para o universo quântico, com um nome curto e começando com 'Q'.",
+    "dificuldade": "facil"
   },
   {
     "id": "q8",
-    "dica": "A gigante da tecnologia que criou o Qiskit, uma ferramenta para programar computadores quânticos."
+    "dica": "A gigante da tecnologia que criou o Qiskit, uma ferramenta para programar computadores quânticos.",
+    "dificuldade": "facil"
   },
   {
     "id": "q9",
-    "dica": "Depois que medimos um estado quântico, ele deixa de ser uma combinação de possibilidades e escolhe um resultado."
+    "dica": "Depois que medimos um estado quântico, ele deixa de ser uma combinação de possibilidades e escolhe um resultado.",
+    "dificuldade": "facil"
   },
   {
     "id": "q10",
-    "dica": "O maior desafio dos computadores quânticos atuais é manter o estado quântico estável diante de interferências externas."
+    "dica": "O maior desafio dos computadores quânticos atuais é manter o estado quântico estável diante de interferências externas.",
+    "dificuldade": "medio"
   },
   {
     "id": "q11",
-    "dica": "Quando um sistema quântico interage demais com o ambiente, ele perde suas propriedades especiais."
+    "dica": "Quando um sistema quântico interage demais com o ambiente, ele perde suas propriedades especiais.",
+    "dificuldade": "medio"
   },
   {
     "id": "q12",
-    "dica": "São os elementos básicos que alteram o estado dos qubits, assim como as portas lógicas alteram bits em computadores clássicos."
+    "dica": "São os elementos básicos que alteram o estado dos qubits, assim como as portas lógicas alteram bits em computadores clássicos.",
+    "dificuldade": "medio"
   },
   {
     "id": "q13",
-    "dica": "O principal objetivo da computação quântica é lidar com problemas muito difíceis para computadores comuns."
+    "dica": "O principal objetivo da computação quântica é lidar com problemas muito difíceis para computadores comuns.",
+    "dificuldade": "facil"
   },
   {
     "id": "q14",
-    "dica": "Embora pareça estranho, um qubit pode representar muitos estados ao mesmo tempo, não apenas dois."
+    "dica": "Embora pareça estranho, um qubit pode representar muitos estados ao mesmo tempo, não apenas dois.",
+    "dificuldade": "facil"
   },
   {
     "id": "q15",
-    "dica": "Esse fenômeno conecta dois qubits de forma instantânea, independentemente da distância que os separa."
+    "dica": "Esse fenômeno conecta dois qubits de forma instantânea, independentemente da distância que os separa.",
+    "dificuldade": "medio" 
   },
   {
     "id": "q16",
-    "dica": "Um ramo da matemática que estuda vetores e matrizes é essencial para entender como os qubits funcionam."
+    "dica": "Um ramo da matemática que estuda vetores e matrizes é essencial para entender como os qubits funcionam.",
+    "dificuldade": "medio"
   },
   {
     "id": "q17",
-    "dica": "Os computadores quânticos operam em uma escala muito pequena, onde as regras clássicas da física não valem mais."
+    "dica": "Os computadores quânticos operam em uma escala muito pequena, onde as regras clássicas da física não valem mais.",
+    "dificuldade": "facil"
   },
   {
     "id": "q18",
-    "dica": "Uma máquina que não é quântica, mas tenta imitar o comportamento dos sistemas quânticos para estudo."
+    "dica": "Uma máquina que não é quântica, mas tenta imitar o comportamento dos sistemas quânticos para estudo.",
+    "dificuldade": "medio"
   },
   {
     "id": "q19",
-    "dica": "Na computação quântica, algumas operações podem ser revertidas perfeitamente, sem perda de informação."
+    "dica": "Na computação quântica, algumas operações podem ser revertidas perfeitamente, sem perda de informação.",
+    "dificuldade": "medio"
   },
   {
     "id": "q20",
-    "dica": "Uma área que ainda não se beneficia diretamente da computação quântica, relacionada a entretenimento casual."
+    "dica": "Uma área que ainda não se beneficia diretamente da computação quântica, relacionada a entretenimento casual.",
+    "dificuldade": "facil"
+  },
+  {
+    "id": "q21",
+    "dica": "Um algoritmo quântico que resolve sistemas de equações lineares exponencialmente mais rápido que os métodos clássicos.",
+    "dificuldade": "dificil"
+  },
+  {
+    "id": "q22",
+    "dica": "Um conceito que descreve como algoritmos quânticos podem simular a evolução de moléculas complexas.",
+    "dificuldade": "dificil"
+  },
+  {
+    "id": "q23",
+    "dica": "Técnica usada para reduzir erros em qubits físicos agrupando-os em qubits lógicos mais estáveis",
+    "dificuldade": "dificil"
+  },
+  {
+    "id": "q24",
+    "dica": "Esse teorema garante que não é possível clonar perfeitamente um estado quântico desconhecido",
+    "dificuldade": "dificil"
+  },
+  {
+    "id": "q25",
+    "dica": "Um modelo computacional que combina teoria dos grafos com estados quânticos para representar cálculos",
+    "dificuldade": "dificil"
+  },
+  {
+    "id": "q26",
+    "dica": "Estratégia usada para proteger qubits de ruído, aproveitando simetrias da física quântica",
+    "dificuldade": "dificil"
+  },
+  {
+    "id": "q27",
+    "dica": "Um método de otimização híbrido que combina algoritmos clássicos com circuitos quânticos variacionais",
+    "dificuldade": "dificil"
+  },
+  {
+    "id": "q28",
+    "dica": "Um protocolo de comunicação quântica que permite distribuir chaves criptográficas com segurança absoluta",
+    "dificuldade": "dificil"
   }
 ]
