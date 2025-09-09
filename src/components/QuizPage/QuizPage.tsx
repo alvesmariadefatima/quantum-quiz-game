@@ -22,47 +22,61 @@ interface QuizState {
   };
 }
 
+const QUESTION_TIME_LIMIT = 60; // segundos por questão
+
 const QuizPage = () => {
   const navigate = useNavigate();
 
-  const shuffleArray = <T,>(array: T[]): T[] => {
-    return array
+  const shuffleArray = <T,>(array: T[]): T[] =>
+    array
       .map(value => ({ value, sorte: Math.random() }))
       .sort((a, b) => a.sorte - b.sorte)
       .map(({ value }) => value);
-  };
 
-  // Embaralha perguntas apenas uma vez no início
   const [questions, setQuestions] = useState<Question[]>([]);
-
-  useEffect(() => {
-    setQuestions(shuffleArray(rawQuestions));
-  }, []);
-
   const [quizState, setQuizState] = useState<QuizState>({
     currentQuestionIndex: 0,
     answers: {},
   });
-
   const [showHint, setShowHint] = useState(false);
+  const [timeElapsed, setTimeElapsed] = useState(0);
 
-  if (questions.length === 0) return null; // Evita erro até embaralhar
+  // Embaralhar perguntas apenas uma vez
+  useEffect(() => {
+    setQuestions(shuffleArray(rawQuestions));
+  }, []);
 
-  const currentQuestion: Question = questions[quizState.currentQuestionIndex];
+  // Cronômetro
+  useEffect(() => {
+    setTimeElapsed(0);
+    const interval = setInterval(() => setTimeElapsed(prev => prev + 1), 1000);
+    return () => clearInterval(interval);
+  }, [quizState.currentQuestionIndex]);
+
+  // Avança automaticamente quando o tempo acabar
+  useEffect(() => {
+    if (timeElapsed >= QUESTION_TIME_LIMIT) handleNextQuestion();
+  }, [timeElapsed]);
+
+  const currentQuestion = questions[quizState.currentQuestionIndex] || null;
   const totalQuestions = questions.length;
+
+  if (!currentQuestion) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        Carregando quiz...
+      </div>
+    );
+  }
 
   const currentAnswer = quizState.answers[quizState.currentQuestionIndex];
   const selectedAnswer = currentAnswer?.selectedAnswer || null;
   const isAnswered = currentAnswer?.isAnswered || false;
   const isCorrect = selectedAnswer === currentQuestion.resposta_correta;
-
-  // Busca a dica correspondente pelo id da questão atual
-  const currentHint = answerGuides.find(
-    (hint) => hint.id === currentQuestion.id
-  )?.dica;
+  const currentHint = answerGuides.find(h => h.id === currentQuestion.id)?.dica;
 
   const handleAnswerClick = (answer: string) => {
-    setQuizState((prev) => ({
+    setQuizState(prev => ({
       ...prev,
       answers: {
         ...prev.answers,
@@ -77,11 +91,12 @@ const QuizPage = () => {
 
   const handleNextQuestion = () => {
     if (quizState.currentQuestionIndex < totalQuestions - 1) {
-      setQuizState((prev) => ({
+      setQuizState(prev => ({
         ...prev,
         currentQuestionIndex: prev.currentQuestionIndex + 1,
       }));
       setShowHint(false);
+      setTimeElapsed(0);
     } else {
       navigate("/gameresults", {
         state: {
@@ -96,37 +111,52 @@ const QuizPage = () => {
 
   const handlePreviousQuestion = () => {
     if (quizState.currentQuestionIndex > 0) {
-      setQuizState((prev) => ({
+      setQuizState(prev => ({
         ...prev,
         currentQuestionIndex: prev.currentQuestionIndex - 1,
       }));
       setShowHint(false);
+      setTimeElapsed(0);
     }
   };
 
-  const calculateScore = (): number => {
+  const calculateScore = () => {
     return Object.entries(quizState.answers).reduce((score, [index, answer]) => {
       const correctAnswer = questions[+index].resposta_correta;
       return answer.selectedAnswer === correctAnswer ? score + 1 : score - 1;
     }, 0);
   };
 
-  const countCorrect = (): number => {
-    return Object.entries(quizState.answers).filter(
+  const countCorrect = () =>
+    Object.entries(quizState.answers).filter(
       ([index, answer]) => answer.selectedAnswer === questions[+index].resposta_correta
     ).length;
-  };
 
-  const countIncorrect = (): number => {
-    return Object.entries(quizState.answers).filter(
+  const countIncorrect = () =>
+    Object.entries(quizState.answers).filter(
       ([index, answer]) => answer.selectedAnswer !== questions[+index].resposta_correta
     ).length;
+
+  const getTimerColor = (seconds: number) => {
+    if (seconds <= 40) return 'bg-green-200 text-green-800';
+    if (seconds <= 55) return 'bg-yellow-200 text-yellow-800';
+    return 'bg-red-200 text-red-800';
+  };
+
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+    const s = (seconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
   };
 
   const score = calculateScore();
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-4 py-6 overflow-auto">
+    <div className="relative flex items-center justify-center min-h-screen px-4 py-6 overflow-auto">
+      <div className={`absolute top-4 right-4 px-3 py-1 rounded-lg font-semibold ${getTimerColor(timeElapsed)}`}>
+        ⏱ {formatTime(timeElapsed)}
+      </div>
+
       <article className="bg-white shadow-xl rounded-2xl w-full max-w-2xl p-5 sm:p-6 md:p-8 space-y-6 h-fit">
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <h1 className="text-xl font-bold">
@@ -134,21 +164,16 @@ const QuizPage = () => {
           </h1>
           <div className="flex items-center gap-4">
             <span className="text-md font-semibold text-black flex items-center gap-2">
-              <div className="bg-purple-400 p-1 rounded">
-                <FaRegStar className="text-white" />
-              </div>
+              <div className="bg-purple-400 p-1 rounded"><FaRegStar className="text-white" /></div>
               Pontuação: {score}
             </span>
-
             <button
-              onClick={() => setShowHint((prev) => !prev)}
+              onClick={() => setShowHint(prev => !prev)}
               className="text-md font-semibold text-black flex items-center gap-2 focus:outline-none cursor-pointer"
               aria-expanded={showHint}
               aria-controls="hint-content"
             >
-              <div className="bg-purple-400 p-1 rounded">
-                <IoMdHelpCircle className="text-white" />
-              </div>
+              <div className="bg-purple-400 p-1 rounded"><IoMdHelpCircle className="text-white" /></div>
               Dicas
             </button>
           </div>
@@ -156,7 +181,6 @@ const QuizPage = () => {
 
         <section>
           <h2 className="font-semibold text-lg mb-6 break-words">{currentQuestion.pergunta}</h2>
-
           <ul className="space-y-3">
             {currentQuestion.alternativas.map((alt, index) => {
               const isCorrectAnswer = alt === currentQuestion.resposta_correta;
@@ -175,22 +199,10 @@ const QuizPage = () => {
                   onClick={() => handleAnswerClick(alt)}
                   className={`flex items-center gap-3 cursor-pointer p-3 rounded-lg transition ${bgClass} hover:bg-gray-100 break-words text-sm sm:text-base`}
                 >
-                  <span
-                    className={`w-5 h-5 flex-shrink-0 flex items-center justify-center border-2 rounded-full ${
-                      isSelected
-                        ? isCorrectAnswer
-                          ? 'border-green-600'
-                          : 'border-red-600'
-                        : 'border-gray-400'
-                    }`}
-                  >
-                    {isSelected && (
-                      <span
-                        className={`w-3 h-3 rounded-full ${
-                          isCorrectAnswer ? 'bg-green-600' : 'bg-red-600'
-                        }`}
-                      />
-                    )}
+                  <span className={`w-5 h-5 flex-shrink-0 flex items-center justify-center border-2 rounded-full ${
+                    isSelected ? (isCorrectAnswer ? 'border-green-600' : 'border-red-600') : 'border-gray-400'
+                  }`}>
+                    {isSelected && <span className={`w-3 h-3 rounded-full ${isCorrectAnswer ? 'bg-green-600' : 'bg-red-600'}`} />}
                   </span>
                   <span className="text-gray-800">{alt}</span>
                 </li>
@@ -204,20 +216,14 @@ const QuizPage = () => {
                 <p className="text-green-700 font-semibold">✅ Resposta correta!</p>
               ) : (
                 <p className="text-red-700 font-semibold">
-                  ❌ Resposta incorreta. A correta era:{' '}
-                  <span className="underline">{currentQuestion.resposta_correta}</span>
+                  ❌ Resposta incorreta. A correta era: <span className="underline">{currentQuestion.resposta_correta}</span>
                 </p>
               )}
             </div>
           )}
 
           {showHint && currentHint && (
-            <div
-              id="hint-content"
-              className="mt-5 p-4 bg-yellow-100 rounded border border-yellow-300 text-yellow-800 text-sm sm:text-base"
-              role="region"
-              aria-live="polite"
-            >
+            <div id="hint-content" className="mt-5 p-4 bg-yellow-100 rounded border border-yellow-300 text-yellow-800 text-sm sm:text-base" role="region" aria-live="polite">
               💡 {currentHint}
             </div>
           )}
@@ -245,9 +251,7 @@ const QuizPage = () => {
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
           >
-            {quizState.currentQuestionIndex < totalQuestions - 1
-              ? 'Avançar'
-              : 'Finalizar Quiz'}
+            {quizState.currentQuestionIndex < totalQuestions - 1 ? 'Avançar' : 'Finalizar Quiz'}
           </button>
         </div>
       </article>
