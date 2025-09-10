@@ -166,8 +166,10 @@ const GameResults = () => {
           <a href={links.facebook} target="_blank" rel="noopener noreferrer">
             <FaFacebook className="text-blue-500 text-3xl" />
           </a>
-          <button onClick={handleDownloadImage}>
-            <FaSquareInstagram className="text-pink-500 text-3xl" />
+          <button 
+            onClick={handleDownloadImage}
+          >
+            <FaSquareInstagram className="text-pink-500 text-3xl cursor-pointer" />
           </button>
           <a href={links.whatsapp} target="_blank" rel="noopener noreferrer">
             <IoLogoWhatsapp className="text-green-400 text-3xl" />
