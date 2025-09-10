@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import axios from "axios";
 import atomo from '../assets/atomo.png';
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaFacebook, FaLinkedin, FaStar, FaStarHalfAlt } from "react-icons/fa";
@@ -11,6 +12,8 @@ interface PlayerScore {
   name: string;
   score: number;
 }
+
+const API_URL = "http://localhost:4000/api/ranking";
 
 const GameResults = () => {
   const navigate = useNavigate();
@@ -48,30 +51,37 @@ const GameResults = () => {
     }
   };
 
-  useEffect(() => {
+  const loadRanking = async () => {
     try {
-      const stored = JSON.parse(localStorage.getItem("ranking") || "[]");
-      setRanking(stored);
-    } catch (e) {
-      console.error("Erro ao carregar ranking:", e);
+      const response = await axios.get<PlayerScore[]>(API_URL);
+      setRanking(response.data as PlayerScore[]);
+    } catch (err) {
+      console.error("Erro ao carregar ranking:", err);
     }
-  }, []);
+  };
 
-  const saveToRanking = () => {
+  const saveToRanking = async () => {
     if (!playerName.trim()) {
       alert("Digite seu nome para entrar no ranking!");
       return;
     }
 
-    const newScore = { name: playerName.trim(), score: correct };
-    const newRanking = [...ranking, newScore]
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 10);
-
-    setRanking(newRanking);
-    localStorage.setItem("ranking", JSON.stringify(newRanking));
-    setSaved(true);
+    try {
+      const response = await axios.post(API_URL, {
+        name: playerName.trim(),
+        score: correct,
+      });
+      setRanking(response.data as PlayerScore[]);
+      setSaved(true);
+    } catch (err) {
+      console.error("Erro ao salvar no ranking:", err);
+      alert("Não foi possível salvar o ranking.");
+    }
   };
+
+  useEffect(() => {
+    loadRanking();
+  }, []);
 
   return (
     <div
@@ -84,7 +94,7 @@ const GameResults = () => {
       }}
     >
       <section className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md text-center space-y-4">
-        
+
         <div
           ref={resultRef}
           className="bg-gradient-to-tr from-purple-700 via-pink-500 to-yellow-400 text-white p-6 rounded-2xl shadow-lg flex flex-col items-center space-y-4"
