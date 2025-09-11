@@ -164,8 +164,8 @@
   {
     "id": "q24",
     "pergunta": "Qual princípio fundamental afirma que não é possível copiar um estado quântico desconhecido?",
-    "alternativas": ["Teorema da completude", "Teorema do não-clonagem", "Princípio da incerteza", "Decoerência quântica"],
-    "resposta_correta": "Teorema do não-clonagem",
+    "alternativas": ["Teorema da completude", "Teorema da não-clonagem", "Princípio da incerteza", "Decoerência quântica"],
+    "resposta_correta": "Teorema da não-clonagem",
     "dificuldade": "dificil"
   },
   {
