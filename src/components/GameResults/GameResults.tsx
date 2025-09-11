@@ -13,7 +13,7 @@ interface PlayerScore {
   score: number;
 }
 
-const API_URL = "http://localhost:4000/api/ranking";
+const API_URL = "https://backend-api-quantum-quiz.onrender.com/api/ranking/";
 
 const GameResults = () => {
   const navigate = useNavigate();
@@ -67,16 +67,16 @@ const GameResults = () => {
     }
 
     try {
-      const response = await axios.post(API_URL, {
+      await axios.post(API_URL, {
         name: playerName.trim(),
         score: correct,
       });
-      setRanking(response.data as PlayerScore[]);
-      setSaved(true);
-    } catch (err) {
-      console.error("Erro ao salvar no ranking:", err);
-      alert("Não foi possível salvar o ranking.");
-    }
+      await loadRanking();
+        setSaved(true);
+      } catch (err) {
+        console.error("Erro ao salvar no ranking:", err);
+        alert("Não foi possível salvar o ranking.");
+      }
   };
 
   useEffect(() => {
