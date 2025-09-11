@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import rawQuestions from '../../questions/questions.json';
-import answerGuides from '../../hints/answer_guides.json';
 import { FaRegStar } from 'react-icons/fa6';
 import { IoMdHelpCircle } from "react-icons/io";
 
@@ -9,7 +8,11 @@ interface Question {
   id: string;
   pergunta: string;
   alternativas: string[];
-  resposta_correta: string;
+  resposta_correta: {
+    texto: string;
+    explicacao: string;
+    link_referencia: string;
+  };
 }
 
 interface QuizState {
@@ -72,8 +75,7 @@ const QuizPage = () => {
   const currentAnswer = quizState.answers[quizState.currentQuestionIndex];
   const selectedAnswer = currentAnswer?.selectedAnswer || null;
   const isAnswered = currentAnswer?.isAnswered || false;
-  const isCorrect = selectedAnswer === currentQuestion.resposta_correta;
-  const currentHint = answerGuides.find(h => h.id === currentQuestion.id)?.dica;
+  const isCorrect = selectedAnswer === currentQuestion.resposta_correta.texto;
 
   const handleAnswerClick = (answer: string) => {
     setQuizState(prev => ({
@@ -122,19 +124,19 @@ const QuizPage = () => {
 
   const calculateScore = () => {
     return Object.entries(quizState.answers).reduce((score, [index, answer]) => {
-      const correctAnswer = questions[+index].resposta_correta;
+      const correctAnswer = questions[+index].resposta_correta.texto;
       return answer.selectedAnswer === correctAnswer ? score + 1 : score - 1;
     }, 0);
   };
 
   const countCorrect = () =>
     Object.entries(quizState.answers).filter(
-      ([index, answer]) => answer.selectedAnswer === questions[+index].resposta_correta
+      ([index, answer]) => answer.selectedAnswer === questions[+index].resposta_correta.texto
     ).length;
 
   const countIncorrect = () =>
     Object.entries(quizState.answers).filter(
-      ([index, answer]) => answer.selectedAnswer !== questions[+index].resposta_correta
+      ([index, answer]) => answer.selectedAnswer !== questions[+index].resposta_correta.texto
     ).length;
 
   const getTimerColor = (seconds: number) => {
@@ -183,7 +185,7 @@ const QuizPage = () => {
           <h2 className="font-semibold text-lg mb-6 break-words">{currentQuestion.pergunta}</h2>
           <ul className="space-y-3">
             {currentQuestion.alternativas.map((alt, index) => {
-              const isCorrectAnswer = alt === currentQuestion.resposta_correta;
+              const isCorrectAnswer = alt === currentQuestion.resposta_correta.texto;
               const isSelected = alt === selectedAnswer;
 
               let bgClass = 'bg-white';
@@ -215,16 +217,21 @@ const QuizPage = () => {
               {isCorrect ? (
                 <p className="text-green-700 font-semibold">✅ Resposta correta!</p>
               ) : (
-                <p className="text-red-700 font-semibold">
-                  ❌ Resposta incorreta. A correta era: <span className="underline">{currentQuestion.resposta_correta}</span>
-                </p>
+                <div className="text-red-700">
+                  <p className="font-semibold">
+                    ❌ Resposta incorreta. A correta era: <span className="underline">{currentQuestion.resposta_correta.texto}</span>
+                  </p>
+                  <p className="text-black mt-1">{currentQuestion.resposta_correta.explicacao}</p>
+                  <a
+                    href={currentQuestion.resposta_correta.link_referencia}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 underline mt-1 inline-block"
+                  >
+                    Saiba mais
+                  </a>
+                </div>
               )}
-            </div>
-          )}
-
-          {showHint && currentHint && (
-            <div id="hint-content" className="mt-5 p-4 bg-yellow-100 rounded border border-yellow-300 text-yellow-800 text-sm sm:text-base" role="region" aria-live="polite">
-              💡 {currentHint}
             </div>
           )}
         </section>
