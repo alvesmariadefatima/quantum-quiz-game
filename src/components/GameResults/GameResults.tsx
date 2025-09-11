@@ -13,7 +13,8 @@ interface PlayerScore {
   score: number;
 }
 
-const API_URL = "https://backend-api-quantum-quiz.onrender.com/";
+// ✅ Corrigido: rota certa do backend
+const API_URL = "https://backend-api-quantum-quiz.onrender.com/api/ranking";
 
 const GameResults = () => {
   const navigate = useNavigate();
@@ -72,11 +73,11 @@ const GameResults = () => {
         score: correct,
       });
       await loadRanking();
-        setSaved(true);
-      } catch (err) {
-        console.error("Erro ao salvar no ranking:", err);
-        alert("Não foi possível salvar o ranking.");
-      }
+      setSaved(true);
+    } catch (err) {
+      console.error("Erro ao salvar no ranking:", err);
+      alert("Não foi possível salvar o ranking.");
+    }
   };
 
   useEffect(() => {
