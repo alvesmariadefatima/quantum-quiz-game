@@ -8,11 +8,14 @@ interface Question {
   id: string;
   pergunta: string;
   alternativas: string[];
-  resposta_correta: {
-    texto: string;
-    explicacao: string;
-    link_referencia: string;
-  };
+  resposta_correta: RespostaCorreta;
+  dificuldade: string;
+}
+
+type RespostaCorreta = {
+  texto: string;
+  explicacao: string;
+  link_referencia: string;
 }
 
 interface QuizState {
