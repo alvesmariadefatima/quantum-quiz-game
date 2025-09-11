@@ -13,7 +13,7 @@ interface PlayerScore {
   score: number;
 }
 
-const API_URL = "https://backend-api-quantum-quiz.onrender.com/api/ranking/";
+const API_URL = "https://backend-api-quantum-quiz.onrender.com/";
 
 const GameResults = () => {
   const navigate = useNavigate();
