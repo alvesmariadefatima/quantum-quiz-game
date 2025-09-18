@@ -5,6 +5,7 @@ import InsertNickname from './components/InsertNickname/InsertNickname';
 import GameInstructions from './components/GameInstructions/GameInstructions';
 import QuizPage from './components/QuizPage/QuizPage';
 import GameResults from './components/GameResults/GameResults';
+import ARQuiz from "./components/ARQuiz/ARQuiz";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/gameinstructions" element={< GameInstructions/>} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/gameresults" element={<GameResults />} />
+          <Route path="/quiz-ar" element={<ARQuiz />} />
         </Routes>
       </BrowserRouter>
     </div>
