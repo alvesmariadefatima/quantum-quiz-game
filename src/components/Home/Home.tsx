@@ -1,78 +1,40 @@
-import Footer from "../Footer/Footer"
-import { useNavigate } from "react-router-dom"
+import { CardSimulador } from "../CardSimulator/CardSimulador";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
-    const navigate = useNavigate();
+  return (
+    <>
+      <Navbar />
 
-    const handleStartGame = () => {
-        navigate("/nickname");
-    };
+      <div className="flex flex-col items-center justify-center text-center mt-20 gap-8 px-4">
+        <h1 className=" mt-16 text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-snug">
+          O universo quântico te espera!
+        </h1>
 
-    const handleGameInstructions = () => {
-        navigate("/gameinstructions");
-    };
+        <button
+          className="mt-6 sm:mt-10 bg-white text-purple-600 rounded-full px-8 sm:px-10 py-3 sm:py-5 text-lg sm:text-2xl shadow-lg hover:bg-purple-700 hover:text-white hover:scale-105 transition-all duration-300"
+        >
+          Jogar
+        </button>
 
-    const handleQuizAR = () => {
-        navigate("/quiz-ar");
-    };
+        <div id="simuladores" className="flex flex-wrap justify-center items-start gap-8 sm:gap-10 mt-10 w-full max-w-6xl">
+          <CardSimulador
+            titulo="IBM Qiskit"
+            descricao="Aprenda IBM Qiskit na prática! Simule seus circuitos quânticos e codifique o futuro."
+            imagem="src/components/assets/logotipo-ibm-qiskit.png"
+          />
 
-    return (
-        <>
-        <div className="flex flex-col items-center justify-center min-h-screen gap-6">
-            <section className="bg-white shadow-lg rounded-xl p-6 w-90 text-center">
-                <h1 className="text-xl font-semibold mb-4">⚛️ Quantum Quiz</h1>
-
-                <div className="flex flex-col space-y-3">
-                    <button
-                        onClick={handleStartGame}
-                        className="bg-purple-400 hover:bg-purple-500 text-white text-sm px-4 py-2 rounded w-full cursor-pointer transition duration-200"
-                    >
-                        Iniciar Partida
-                    </button>
-
-                    <button 
-                        onClick={handleGameInstructions}
-                        className="bg-purple-400 hover:bg-purple-500 text-white text-sm px-4 py-2 rounded w-full cursor-pointer transition duration-200"
-                    >
-                        Regras do Jogo
-                    </button>
-
-                    <button
-                        onClick={handleQuizAR}
-                        className="bg-purple-400 hover:bg-purple-500 text-white text-sm px-4 py-2 rounded w-full cursor-pointer transition duration-200"
-                    >
-                        Experimente o jogo na versão 3D
-                    </button>
-                </div>
-            </section>
-
-            <section className="bg-white shadow-lg rounded-xl p-6 w-90 text-center">
-                <h2 className="mb-4 font-medium">🔗 Conheça os simuladores quânticos:</h2>
-
-                <div className="flex flex-col space-y-3">
-                    <a
-                        href="https://www.ibm.com/quantum/qiskit"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-purple-400 hover:bg-purple-500 text-white text-sm px-4 py-2 rounded w-full cursor-pointer transition duration-200"
-                    >
-                        Conheça o IBM Qiskit
-                    </a>
-
-                    <a
-                        href="https://quantumai.google/cirq"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-purple-400 hover:bg-purple-500 text-white text-sm px-4 py-2 rounded w-full cursor-pointer transition duration-200"
-                    >
-                        Conheça o Google Cirq
-                    </a>
-                </div>
-            </section>
+          <CardSimulador
+            titulo="Google Cirq"
+            descricao="Construa, simule, inove. Aprenda Google Cirq e prepare-se para programar os processadores quânticos de amanhã."
+            imagem="src/components/assets/logotipo-google-cirq.png"
+          />
         </div>
-        <Footer />
-        </>
-    );
-}
+      </div>
+  <Footer />
+    </>
+  );
+};
 
 export default Home;
