@@ -23,7 +23,7 @@ function Navbar() {
       <div className="flex items-center justify-between px-6 py-6 md:py-4 max-w-7xl mx-auto">
         <div className="flex items-center space-x-2">
           <img
-            src="src/components/assets/atomo.png"
+            src="./atomo.png"
             alt="Logotipo Quantum Quiz"
             className="h-10 w-10"
           />
