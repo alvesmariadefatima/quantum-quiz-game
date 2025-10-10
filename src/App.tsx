@@ -1,4 +1,4 @@
-import atomo from './components/assets/atomo.png';
+import atomo from '../public/atomo.png';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import InsertNickname from './components/InsertNickname/InsertNickname';
