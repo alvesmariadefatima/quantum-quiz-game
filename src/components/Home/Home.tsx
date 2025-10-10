@@ -22,13 +22,13 @@ const Home = () => {
           <CardSimulador
             titulo="IBM Qiskit"
             descricao="Aprenda IBM Qiskit na prática! Simule seus circuitos quânticos e codifique o futuro."
-            imagem="src/components/assets/logotipo-ibm-qiskit.png"
+            imagem="./logotipo-ibm-qiskit.png"
           />
 
           <CardSimulador
             titulo="Google Cirq"
             descricao="Construa, simule, inove. Aprenda Google Cirq e prepare-se para programar os processadores quânticos de amanhã."
-            imagem="src/components/assets/logotipo-google-cirq.png"
+            imagem="./logotipo-google-cirq.png"
           />
         </div>
       </div>
