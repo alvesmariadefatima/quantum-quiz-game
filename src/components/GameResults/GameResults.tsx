@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import axios from "axios";
-import atomo from '../assets/atomo.png';
+import atomo from '../../../public/atomo.png';
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaFacebook, FaLinkedin, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { FaSquareInstagram, FaTelegram, FaSquareXTwitter } from "react-icons/fa6";
