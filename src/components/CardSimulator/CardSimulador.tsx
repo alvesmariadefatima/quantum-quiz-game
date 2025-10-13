@@ -4,12 +4,14 @@ interface CardSimuladorProps {
   titulo: string;
   descricao: string;
   imagem: string;
+  link: string;
 }
 
 export const CardSimulador: React.FC<CardSimuladorProps> = ({
   titulo,
   descricao,
   imagem,
+  link,
 }) => {
   return (
     <div
@@ -46,9 +48,13 @@ export const CardSimulador: React.FC<CardSimuladorProps> = ({
           </p>
         </div>
 
-        <button className="w-full bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 rounded-full transition-colors duration-300 text-sm sm:text-base">
-          Saiba mais
-        </button>
+        <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-purple-700 hover:bg-purple-800 text-white font-semibold py-2 rounded-full transition-colors duration-300 text-sm sm:text-base">
+            Saiba mais
+        </a>
       </div>
     </div>
   );
