@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FaFacebook, FaLinkedin, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaSquareInstagram, FaTelegram, FaSquareXTwitter } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
 import * as htmlToImage from "html-to-image";
@@ -18,16 +18,12 @@ const GameResults = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { correct = 0, incorrect = 0, totalQuestions = 0 } = location.state || {};
+  const { correct = 0, incorrect = 0 } = location.state || {};
 
   const resultRef = useRef<HTMLDivElement>(null);
   const [ranking, setRanking] = useState<PlayerScore[]>([]);
   const [playerName, setPlayerName] = useState("");
   const [saved, setSaved] = useState(false);
-
-  const totalStars = 5;
-  const performanceRatio = totalQuestions ? correct / totalQuestions : 0;
-  const starsToDisplay = performanceRatio * totalStars;
 
   const shareText = `Acabei de jogar e fiz ${correct} acertos e ${incorrect} erros!`;
   const shareUrl = "https://quantum-quiz-game.vercel.app";
@@ -90,26 +86,6 @@ const GameResults = () => {
           ref={resultRef}
           className="text-white p-6 flex flex-col items-center space-y-4"
         >
-          <div className="flex space-x-1">
-            {[...Array(totalStars)].map((_, i) => {
-              let StarComponent;
-              if (i + 1 <= Math.floor(starsToDisplay)) {
-                StarComponent = FaStar;
-              } else if (i < starsToDisplay) {
-                StarComponent = FaStarHalfAlt;
-              } else {
-                StarComponent = FaStar;
-              }
-              const colorClass = i + 1 <= starsToDisplay ? "text-yellow-400" : "text-yellow-300";
-              return (
-                <StarComponent
-                  key={i}
-                  className={`${colorClass} fill-current text-3xl animate-pulse`}
-                />
-              );
-            })}
-          </div>
-
           <h1 className="text-3xl font-bold">🏆 Resultado Final</h1>
           <p className="text-lg font-semibold">Acertos: {correct}</p>
           <p className="text-lg font-semibold">Erros: {incorrect}</p>
