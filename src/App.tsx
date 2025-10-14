@@ -7,6 +7,7 @@ import QuizPage from './components/QuizPage/QuizPage';
 import GameResults from './components/GameResults/GameResults';
 import ARQuiz from "./components/ARQuiz/ARQuiz";
 import InsertNicknameAR from "./components/InsertNicknameAR/InsertNicknameAR"
+import GameResultsAR from "./components/GameResultsAR/GameResultsAR"
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/gameresults" element={<GameResults />} />
           <Route path="/quiz-ar" element={<ARQuiz />} />
           <Route path="/insertnickname-ar" element={<InsertNicknameAR />} />
+          <Route path="/gameresults-ar" element={<GameResultsAR />} />
         </Routes>
       </BrowserRouter>
     </div>
