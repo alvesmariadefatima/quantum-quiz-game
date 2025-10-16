@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import questionsData from "../../questions/questions.json";
 import answerGuides from "../../hints/answer_guides.json";
 
@@ -27,7 +27,10 @@ export default function ARQuiz() {
   const [index, setIndex] = useState(0);
   const [feedback, setFeedback] = useState<React.ReactNode>("");
   const [showHint, setShowHint] = useState(false);
-  const navigate = useNavigate(); 
+  const [correct, setCorrect] = useState(0);  
+  const [incorrect, setIncorrect] = useState(0); 
+  const navigate = useNavigate();
+
   const currentQuestion = questions[index];
   const currentHint = hints.find((h) => h.id === currentQuestion.id)?.dica;
 
@@ -36,18 +39,17 @@ export default function ARQuiz() {
 
     if (currentQuestion.alternativas[i] === correta) {
       setFeedback("✅ Resposta correta!");
+      setCorrect((prev) => prev + 1); 
     } else {
       setFeedback(
         <div className="flex flex-col items-center w-full max-w-md">
           <p className="text-center font-semibold text-lg mb-2">
             ❌ Resposta incorreta
           </p>
-
           <p className="text-justify text-white p-4 rounded-md drop-shadow-md w-full">
             <span className="font-semibold">Explicação:</span>{" "}
             {currentQuestion.resposta_correta.explicacao}
           </p>
-
           <a
             href={currentQuestion.resposta_correta.link_referencia}
             target="_blank"
@@ -58,6 +60,7 @@ export default function ARQuiz() {
           </a>
         </div>
       );
+      setIncorrect((prev) => prev + 1);
     }
   };
 
@@ -68,7 +71,7 @@ export default function ARQuiz() {
   };
 
   const finishQuiz = () => {
-    navigate("/gameresults-ar");
+    navigate("/gameresults-ar", { state: { correct, incorrect } });
   };
 
   const isLastQuestion = index === questions.length - 1;
