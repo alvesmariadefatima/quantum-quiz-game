@@ -40,7 +40,7 @@
   {
     "id": "q4",
     "pergunta": "O que é o entrelaçamento quântico (entanglement)?",
-    "alternativas": ["Duas partículas colapsando simultaneamente", "Um tipo de interferência entre sinais", "Uma conexão clássica entre átomos", "Uma partícula girando em múltiplos sentidos"],
+    "alternativas": ["Dois qubits permanecem correlacionados mesmo após serem separados", "Um tipo de interferência entre sinais", "Uma conexão clássica entre átomos", "Uma partícula girando em múltiplos sentidos"],
     "resposta_correta": {
       "texto": "Dois qubits permanecem correlacionados mesmo após serem separados",
       "explicacao": "O entrelaçamento quântico cria correlações entre qubits que persistem mesmo à distância, sem necessidade de interação física.",
