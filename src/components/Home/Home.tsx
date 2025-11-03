@@ -9,7 +9,7 @@ const Home = () => {
       <Navbar />
 
       <div className="flex flex-col items-center justify-center text-center mt-20 gap-8 px-4">
-        <h1 className=" mt-16 text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-snug">
+        <h1 className="mt-16 text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-snug">
           O universo quântico te espera!
         </h1>
 
@@ -35,7 +35,27 @@ const Home = () => {
             link="https://quantumai.google/cirq"
           />
         </div>
+
+      <div className="flex flex-col items-center justify-center text-center mt-10 gap-8 px-4">
+        <h1 className="mt-8 text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-snug">
+          Apoie o Projeto
+        </h1>
+        <p className="text-xl text-white text-center">
+          Seu apoio move o conhecimento! Doe qualquer valor e faça parte dessa jornada de aprendizado.
+        </p>
+
+        <section className="bg-white mb-20 rounded-2xl flex flex-col items-center text-center p-6">
+        <img 
+          src="/qrcode.png" 
+          alt="QRCode de Maria de Fátima Nunes Alves" 
+          className="w-3/4 max-w-sm mb-4"
+        />
+         <p className="text-purple-800 font-sans">Nome: Maria de Fátima Nunes Alves</p>
+          <p className="text-purple-800 font-sans">Chave Pix: mnunesalves334@gmail.com</p>
+          <p className="text-purple-800 font-sans">Banco: Nubank</p>
+      </section>
       </div>
+    </div>
   <Footer />
     </>
   );
