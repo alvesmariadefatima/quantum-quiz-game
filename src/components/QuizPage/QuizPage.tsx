@@ -215,6 +215,25 @@ const QuizPage = () => {
             })}
           </ul>
 
+          {/* ✅ Exibir Dica quando o botão "Dicas" for clicado */}
+          {showHint && (
+            <div
+              id="hint-content"
+              className="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-lg text-sm sm:text-base text-gray-800"
+            >
+              <p className="font-semibold text-purple-700 mb-2">💡 Dica:</p>
+              <p className="mb-2">{currentQuestion.resposta_correta.explicacao}</p>
+              <a
+                href={currentQuestion.resposta_correta.link_referencia}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-800"
+              >
+               🔗 Saiba mais
+              </a>
+            </div>
+          )}
+
           {isAnswered && (
             <div className="mt-5 text-sm sm:text-base">
               {isCorrect ? (
@@ -229,9 +248,9 @@ const QuizPage = () => {
                     href={currentQuestion.resposta_correta.link_referencia}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 underline mt-1 inline-block"
+                    className="text-purple-800 mt-1 inline-block"
                   >
-                    Saiba mais
+                    🔗 Saiba mais
                   </a>
                 </div>
               )}
