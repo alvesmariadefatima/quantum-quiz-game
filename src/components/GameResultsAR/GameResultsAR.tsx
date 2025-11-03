@@ -38,7 +38,9 @@ const GameResults = () => {
   const handleDownloadImage = () => {
     if (resultRef.current) {
       htmlToImage
-        .toPng(resultRef.current)
+        .toPng(resultRef.current, {
+          backgroundColor: "#1e3a8a",
+        })
         .then((dataUrl) => download(dataUrl, "resultado-quiz.png"))
         .catch((err) => {
           console.error("Erro ao gerar imagem:", err);
